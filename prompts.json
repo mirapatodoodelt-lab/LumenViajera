@@ -10,37 +10,66 @@
     {
       "day": 1,
       "pairs": [
-        {
-          "morning": "Achte heute auf die Farbe BLAU. Wo siehst du sie überall? Am Himmel, am Meer, an Türen oder auf Mosaiken?",
-          "evening": "Male eine kleine Seite in deinem Tagebuch nur mit blauen Dingen, die du heute gesehen hast. Du kannst auch verschiedene Blautöne mischen."
-        },
-        {
-          "morning": "Spitz die Ohren! Was ist das interessanteste Geräusch, das du heute hörst? Das Lachen von Menschen, eine spanische Gitarre oder das Rauschen der Wellen?",
-          "evening": "Versuche, die Geräusche des Tages als Comic zu zeichnen. Wie sieht 'Lachen' aus? Wie sieht 'Meeresrauschen' als Linie aus?"
-        },
-        {
-          "morning": "Heute ist ein Tiertag! Halte Ausschau nach allen Tieren, die dir begegnen. Eidechsen, Möwen, Hunde oder vielleicht sogar ein Papagei?",
-          "evening": "Zeichne das lustigste oder interessanteste Tier, das du heute gesehen hast, und gib ihm einen Namen und eine Superkraft."
-        }
+        { "morning": "Achte heute auf die Farbe BLAU. Wo siehst du sie überall? Am Himmel, am Meer, an Türen oder auf Mosaiken?", "evening": "Male eine Seite in deinem Tagebuch nur mit blauen Dingen, die du heute gesehen hast. Du kannst auch verschiedene Blautöne mischen." },
+        { "morning": "Spitz die Ohren! Was ist das interessanteste Geräusch, das du heute hörst? Das Lachen von Menschen, eine spanische Gitarre oder das Rauschen der Wellen?", "evening": "Versuche, die Geräusche des Tages zu zeichnen. Wie sieht 'Lachen' aus? Wie sieht 'Meeresrauschen' als Linie aus?" },
+        { "morning": "Heute ist ein Tiertag! Halte Ausschau nach allen Tieren, die dir begegnen. Eidechsen, Möwen, Hunde oder vielleicht sogar ein Papagei?", "evening": "Zeichne das lustigste oder interessanteste Tier, das du heute gesehen hast, und gib ihm einen Namen und eine Superkraft." }
       ]
     },
     {
       "day": 2,
       "pairs": [
-        {
-          "morning": "Finde heute den schönsten Schatten. Ist es der Schatten einer Palme, einer alten Statue oder dein eigener Schatten zur Mittagszeit?",
-          "evening": "Zeichne in dein Tagebuch nur die Umrisse (Schatten) von drei Dingen, die du heute gesehen hast. Können andere erraten, was es ist?"
-        },
-        {
-          "morning": "Was riecht heute am allerbesten? Der Duft von leckerem Essen, von salziger Meeresluft oder von Blumen in einem Park?",
-          "evening": "Beschreibe oder male den leckersten Duft des Tages. Welche Farben und Formen hat er für dich?"
-        },
-        {
-          "morning": "Beobachte die Menschen. Gehen sie heute eher schnell und beschäftigt oder langsam und entspannt? Was für Schuhe tragen sie?",
-          "evening": "Skizziere eine Person, die dir heute aufgefallen ist. Du musst nicht das Gesicht malen, vielleicht nur die Kleidung oder die Haltung."
-        }
+        { "morning": "Finde heute den schönsten Schatten. Ist es der Schatten einer Palme, einer alten Statue oder dein eigener Schatten zur Mittagszeit?", "evening": "Zeichne in dein Tagebuch nur die Umrisse (Schatten) von drei Dingen, die du heute gesehen hast. Können andere erraten, was es ist?" },
+        { "morning": "Was riecht heute am allerbesten? Der Duft von leckerem Essen, von salziger Meeresluft oder von Blumen in einem Park?", "evening": "Beschreibe oder male den leckersten Duft des Tages. Welche Farben und Formen hat er für dich?" },
+        { "morning": "Beobachte die Menschen. Gehen sie heute eher schnell und beschäftigt oder langsam und entspannt? Was für Schuhe tragen sie?", "evening": "Skizziere eine Person, die dir heute aufgefallen ist. Du musst nicht das Gesicht malen, vielleicht nur die Kleidung oder die Haltung." }
+      ]
+    },
+    {
+      "day": 3,
+      "pairs": [
+        { "morning": "Achte heute auf Muster. Findest du welche auf Fliesen, an Hauswänden, auf Blättern oder sogar auf einem Insekt?", "evening": "Erfinde ein eigenes, neues Muster, das von den Mustern inspiriert ist, die du heute gesehen hast." },
+        { "morning": "Was ist das leckerste, was du heute isst oder trinkst? Eine besondere Eissorte, eine frische Orange oder Paella?", "evening": "Male dein Lieblingsessen des Tages. Gib ihm ein lustiges Gesicht und eine Sprechblase." },
+        { "morning": "Finde heute einen geheimen, ruhigen Ort. Ist es eine kleine Gasse, eine Bank unter einem Baum oder ein Platz am Strand?", "evening": "Zeichne eine Schatzkarte, die zu deinem geheimen Ort führt." }
+      ]
+    },
+    {
+      "day": 4,
+      "pairs": [
+        { "morning": "Heute ist der Tag der Formen! Halte Ausschau nach Kreisen, Dreiecken und Vierecken in deiner Umgebung.", "evening": "Baue aus den Formen, die du heute gesehen hast, eine Fantasie-Figur oder ein verrücktes Gebäude." },
+        { "morning": "Finde den freundlichsten Gesichtsausdruck, den du heute bei jemandem siehst. Ein Lächeln, ein Nicken, ein fröhlicher Blick?", "evening": "Zeichne eine Sammlung von verschiedenen Lächeln, die du heute gesehen hast." },
+        { "morning": "Achte auf die Pflanzenwelt. Welche Bäume, Blumen oder Kakteen sind dir heute besonders aufgefallen?", "evening": "Erfinde eine Fantasie-Pflanze, indem du Teile von verschiedenen Pflanzen kombinierst, die du heute gesehen hast." }
+      ]
+    },
+    {
+      "day": 5,
+      "pairs": [
+        { "morning": "Wo entdeckst du heute die Farbe ROT? Auf einer Blume, einem Auto, einem Kleidungsstück oder einer saftigen Tomate?", "evening": "Gestalte eine Seite in deinem Tagebuch, auf der Rot die Hauptrolle spielt. Was für eine Geschichte erzählt diese Farbe heute?" },
+        { "morning": "Sammle heute ein Wort auf Spanisch, das du noch nicht kanntest. Was bedeutet es?", "evening": "Schreibe das neue Wort ganz groß und kunstvoll in dein Tagebuch und male dazu, was es bedeutet." },
+        { "morning": "Wie fühlt sich der Wind heute an? Ist er warm und sanft, kühl und frisch oder stark und böig?", "evening": "Versuche, das Gefühl des Windes zu zeichnen. Ist er eine sanfte Welle oder ein wilder Wirbel?" }
+      ]
+    },
+    {
+      "day": 6,
+      "pairs": [
+        { "morning": "Achte heute auf kleine Details an Gebäuden. Ein schöner Türknauf, ein verziertes Fenstergitter oder ein lustiger Wasserspeier?", "evening": "Zeichne das interessanteste architektonische Detail, das du heute entdeckt hast, ganz groß und genau." },
+        { "morning": "Finde heute etwas, das sehr alt aussieht. No! Nicht tu Papi! Eine rissige Mauer, ein knorriger Baum oder eine alte Münze?", "evening": "Stell dir vor, dieser alte Gegenstand könnte sprechen. Was würde er dir über seine Vergangenheit erzählen? Schreibe es in einer Sprechblase auf." },
+        { "morning": "Was ist der höchste Punkt, den du heute siehst? Ein Kirchturm, ein hoher Hügel oder eine Palme, die in den Himmel ragt?", "evening": "Male die Welt aus der Perspektive eines Vogels, der auf diesem höchsten Punkt sitzt." }
+      ]
+    },
+    {
+      "day": 7,
+      "pairs": [
+        { "morning": "Heute ist der Tag des Lichts. Wo fällt das Sonnenlicht heute am schönsten hin? Durch ein Fenster, auf das Wasser oder durch die Blätter eines Baumes?", "evening": "Spiele mit Licht und Schatten. Zeichne einen Gegenstand und male nur seinen Schatten ganz dunkel." },
+        { "morning": "Beobachte die Wolken. Sehen sie aus wie Tiere, Gesichter oder andere lustige Formen?", "evening": "Zeichne die schönste Wolkenform, die du heute gesehen hast, und erfinde eine kleine Geschichte dazu." },
+        { "morning": "Finde heute etwas, das dich zum Lachen bringt. Ein lustiges Schild, ein tollpatschiger Vogel oder ein Witz von Papi?", "evening": "Halte den lustigsten Moment des Tages in einem kleinen Mini-Comic mit 3 Bildern fest." }
+      ]
+    },
+    {
+      "day": 8,
+      "pairs": [
+        { "morning": "Was ist dein absoluter Lieblingsort an diesem Urlaubsort? Der Strand, ein bestimmtes Café oder eine besondere Straße?", "evening": "Zeichne eine Postkarte von deinem Lieblingsort. An wen würdest du sie schicken und was würdest du schreiben?" },
+        { "morning": "Sammle heute drei kleine Dinge (oder Fotos davon), die dich an diesen Urlaub erinnern werden. Eine Muschel, eine bunte Fliese, ein Zuckerpäckchen?", "evening": "Klebe die Dinge (oder Zeichnungen davon) in dein Tagebuch und schreibe dazu, warum du sie ausgewählt hast. Das ist dein kleiner Urlaubsschatz." },
+        { "morning": "Was ist die wichtigste Sache, die du in diesem Urlaub gelernt oder neu entdeckt hast?", "evening": "Fasse deine wichtigste Erkenntnis in einem einzigen Bild oder einem kurzen Satz zusammen. Das ist dein persönliches Urlaubs-Fazit." }
       ]
     }
   ]
 }
-
