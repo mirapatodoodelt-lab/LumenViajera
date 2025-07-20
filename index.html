@@ -13,6 +13,9 @@
             font-family: 'Poppins', sans-serif;
             color: #333;
             transition: background 1s ease;
+            /* --- HIER IST DIE KORREKTUR --- */
+            min-height: 100vh; /* Sorgt dafür, dass der Body immer die volle Bildschirmhöhe hat */
+            background-attachment: fixed; /* Verhindert, dass der Verlauf mitscrollt und sich wiederholt */
         }
         .app-wrapper {
             padding: 25px;
@@ -75,7 +78,7 @@
         <div id="intro-container">
              <div class="intro-card">
                 Hallo liebe Lumen,<br><br>
-                da ich ja weiß, dass du auf Reisen so gerne Tagebuch führst und schreibst und zeichnest und einklebst, habe ich Dir eine kleine Tagebuch-Inspirations-Seite gebastelt. Ab Dienstag liest Du hier jeden Tag 3 kleine Ideen, die du für dein Tagebuch verwenden kannst, wenn du möchtest.<br><br>
+                da ich ja weiß, dass du auf Reisen so gerne Tagebuch führst und schreibst und zeichnest und einklebst, habe ich Dir eine kleine Tagebuch-Inspirations-Seite gebastelt. Ab Dienstag siehst Du hier jeden Tag kleine Ideen, die du für dein Tagebuch verwenden kannst.<br><br>
                 Liebe Grüße und vor allem viel Spaß<br>
                 Miranda
             </div>
@@ -171,7 +174,7 @@
             
             function renderContentForDay(dayNumber) {
                 const hour = today.getHours();
-                const isMorning = hour < 20;
+                const isMorning = hour < 21; // GEÄNDERT: Abendansicht ab 21 Uhr
                 const dayData = appData.dailyPrompts.find(d => d.day == dayNumber);
 
                 if (!dayData) return;
