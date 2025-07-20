@@ -13,25 +13,24 @@
             font-family: 'Poppins', sans-serif;
             color: #333;
             transition: background 1s ease;
-            /* --- HIER IST DIE KORREKTUR --- */
-            min-height: 100vh; /* Sorgt dafür, dass der Body immer die volle Bildschirmhöhe hat */
-            background-attachment: fixed; /* Verhindert, dass der Verlauf mitscrollt und sich wiederholt */
+            min-height: 100vh;
+            background-attachment: fixed;
         }
         .app-wrapper {
             padding: 25px;
             text-align: center;
-            max-width: 700px; /* Verhindert, dass es auf dem Desktop zu breit wird */
-            margin: 0 auto; /* Zentriert den Wrapper */
+            max-width: 700px;
+            margin: 0 auto;
         }
         h1 {
-            font-family: 'Londrina Shadow', cursive; /* Neue Schriftart */
+            font-family: 'Londrina Shadow', cursive;
             font-size: 3em;
             margin-bottom: 0;
             color: #fff;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
         h2 {
-            font-size: 1.5em; /* Größer und fett */
+            font-size: 1.5em;
             font-weight: 600;
             margin-top: 5px;
         }
@@ -47,6 +46,15 @@
             font-size: 1.1em;
             line-height: 1.6;
             text-align: left;
+        }
+        .prompt-card hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 15px 0;
+        }
+        .prompt-card strong {
+            font-family: 'Kalam', cursive;
+            color: #f8b500;
         }
         #day-selection {
             margin: 20px 0;
@@ -112,13 +120,13 @@
 
             // --- EINSTELLUNGEN ---
             const startDate = new Date('2025-07-22T00:00:00');
-            const morningGradient = 'linear-gradient(135deg, #fceabb, #f8b500)'; // Gelb-Orange
-            const eveningGradient = 'linear-gradient(135deg, #2af598, #009efd)'; // Grün-Blau
+            const morningGradient = 'linear-gradient(135deg, #fceabb, #f8b500)';
+            const eveningGradient = 'linear-gradient(135deg, #2af598, #009efd)';
             
             let appData = {};
+            let currentTripDay = 0;
 
             // --- TESTFUNKTION ---
-            // Hänge ?testDay=X an die URL an, um einen bestimmten Tag zu simulieren
             const urlParams = new URLSearchParams(window.location.search);
             const testDay = urlParams.get('testDay');
             const today = new Date();
@@ -137,26 +145,24 @@
             function main() {
                 const diffTime = today - startDate;
                 const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                const currentTripDay = testDay ? parseInt(testDay) : diffDays;
+                currentTripDay = testDay ? parseInt(testDay) : diffDays;
 
                 if (currentTripDay < 1) {
-                    // Vor der Reise: Intro anzeigen
                     introContainer.classList.remove('hidden');
                     body.style.background = morningGradient;
                 } else {
-                    // Während der Reise: App anzeigen
                     introContainer.classList.add('hidden');
                     daySelectionContainer.classList.remove('hidden');
                     contentArea.classList.remove('hidden');
                     setupDaySelection(currentTripDay);
-                    handleDaySelection(currentTripDay); // Direkt den aktuellen Tag anzeigen
+                    handleDaySelection(currentTripDay);
                 }
             }
 
             function setupDaySelection(maxDay) {
                 daySelectionContainer.innerHTML = '';
                 for (let i = 1; i <= maxDay; i++) {
-                    if (i > appData.dailyPrompts.length) break; // Nicht mehr Buttons als Prompts
+                    if (i > appData.dailyPrompts.length) break;
                     const button = document.createElement('button');
                     button.textContent = `Tag ${i}`;
                     button.dataset.day = i;
@@ -173,16 +179,22 @@
             }
             
             function renderContentForDay(dayNumber) {
-                const hour = today.getHours();
-                const isMorning = hour < 21; // GEÄNDERT: Abendansicht ab 21 Uhr
                 const dayData = appData.dailyPrompts.find(d => d.day == dayNumber);
-
                 if (!dayData) return;
 
-                // Hintergrund setzen
+                if (dayNumber < currentTripDay) {
+                    renderPastDayView(dayData);
+                } else {
+                    renderCurrentDayView(dayData);
+                }
+            }
+
+            function renderCurrentDayView(dayData) {
+                const hour = today.getHours();
+                const isMorning = hour < 21;
+                
                 body.style.background = isMorning ? morningGradient : eveningGradient;
 
-                // Begrüßung setzen
                 if (isMorning) {
                     const randomGreeting = appData.morningGreetings[Math.floor(Math.random() * appData.morningGreetings.length)];
                     greetingTitle.textContent = "Guten Morgen liebe Lumen";
@@ -194,7 +206,6 @@
                     footerText.textContent = "Viel Spaß mit deinem Tagebuch und danach eine gute Nacht!";
                 }
 
-                // Prompts anzeigen
                 promptContainer.innerHTML = '';
                 const promptsToShow = isMorning ? dayData.pairs.map(p => p.morning) : dayData.pairs.map(p => p.evening);
                 
@@ -202,6 +213,25 @@
                     const card = document.createElement('div');
                     card.className = 'prompt-card';
                     card.textContent = promptText;
+                    promptContainer.appendChild(card);
+                });
+            }
+
+            function renderPastDayView(dayData) {
+                body.style.background = morningGradient; // Vergangene Tage haben immer den Morgen-Hintergrund
+                greetingTitle.textContent = `Erinnerung an Tag ${dayData.day}`;
+                greetingSubtitle.textContent = "Das waren deine Inspirationen:";
+                footerText.textContent = "Schön, nochmal zurückzublicken!";
+
+                promptContainer.innerHTML = '';
+                dayData.pairs.forEach(pair => {
+                    const card = document.createElement('div');
+                    card.className = 'prompt-card';
+                    card.innerHTML = `
+                        <p><strong>Morgens:</strong> ${pair.morning}</p>
+                        <hr>
+                        <p><strong>Abends:</strong> ${pair.evening}</p>
+                    `;
                     promptContainer.appendChild(card);
                 });
             }
