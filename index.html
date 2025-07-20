@@ -171,7 +171,7 @@
             
             function renderContentForDay(dayNumber) {
                 const hour = today.getHours();
-                const isMorning = hour < 16;
+                const isMorning = hour < 20;
                 const dayData = appData.dailyPrompts.find(d => d.day == dayNumber);
 
                 if (!dayData) return;
