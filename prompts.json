@@ -1,1 +1,46 @@
+{
+  "morningGreetings": [
+    "Was wirst du heute alles erleben?",
+    "Welche Abenteuer warten heute auf dich?",
+    "Worauf freust du dich heute am meisten?",
+    "Was für ein Tag wird das heute wohl werden?",
+    "Lass uns sehen, was dieser Tag für dich bereithält!"
+  ],
+  "dailyPrompts": [
+    {
+      "day": 1,
+      "pairs": [
+        {
+          "morning": "Achte heute auf die Farbe BLAU. Wo siehst du sie überall? Am Himmel, am Meer, an Türen oder auf Mosaiken?",
+          "evening": "Male eine kleine Seite in deinem Tagebuch nur mit blauen Dingen, die du heute gesehen hast. Du kannst auch verschiedene Blautöne mischen."
+        },
+        {
+          "morning": "Spitz die Ohren! Was ist das interessanteste Geräusch, das du heute hörst? Das Lachen von Menschen, eine spanische Gitarre oder das Rauschen der Wellen?",
+          "evening": "Versuche, die Geräusche des Tages als Comic zu zeichnen. Wie sieht 'Lachen' aus? Wie sieht 'Meeresrauschen' als Linie aus?"
+        },
+        {
+          "morning": "Heute ist ein Tiertag! Halte Ausschau nach allen Tieren, die dir begegnen. Eidechsen, Möwen, Hunde oder vielleicht sogar ein Papagei?",
+          "evening": "Zeichne das lustigste oder interessanteste Tier, das du heute gesehen hast, und gib ihm einen Namen und eine Superkraft."
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "pairs": [
+        {
+          "morning": "Finde heute den schönsten Schatten. Ist es der Schatten einer Palme, einer alten Statue oder dein eigener Schatten zur Mittagszeit?",
+          "evening": "Zeichne in dein Tagebuch nur die Umrisse (Schatten) von drei Dingen, die du heute gesehen hast. Können andere erraten, was es ist?"
+        },
+        {
+          "morning": "Was riecht heute am allerbesten? Der Duft von leckerem Essen, von salziger Meeresluft oder von Blumen in einem Park?",
+          "evening": "Beschreibe oder male den leckersten Duft des Tages. Welche Farben und Formen hat er für dich?"
+        },
+        {
+          "morning": "Beobachte die Menschen. Gehen sie heute eher schnell und beschäftigt oder langsam und entspannt? Was für Schuhe tragen sie?",
+          "evening": "Skizziere eine Person, die dir heute aufgefallen ist. Du musst nicht das Gesicht malen, vielleicht nur die Kleidung oder die Haltung."
+        }
+      ]
+    }
+  ]
+}
 
