@@ -1,1 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reisetagebuch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fceabb, #f8b500);
+            color: #333;
+        }
+        .app-wrapper {
+            padding: 25px;
+            text-align: center;
+        }
+        h1 {
+            font-family: 'Kalam', cursive;
+            font-size: 2.5em;
+            margin-bottom: 0;
+            color: #2c3e50;
+        }
+        h2 {
+            font-size: 1.2em;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+        .greeting-text {
+             margin-top: 30px;
+        }
+        .prompt-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+            font-size: 1.1em;
+            line-height: 1.5;
+        }
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        #day-selection button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            padding: 10px 15px;
+            margin: 5px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        #day-selection button.active, #day-selection button:hover {
+            background: #fff;
+            color: #f8b500;
+        }
+        .hidden { display: none; }
+        .footer { margin-top: 30px; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="app-wrapper">
+        <h1>Lumen y Papi en Valencia</h1>
+        
+        <div id="day-selection">
+            <h2>Welcher Urlaubstag ist heute?</h2>
+            <!-- Buttons werden hier von JS eingefügt -->
+        </div>
+
+        <div id="content-area" class="hidden">
+            <div class="greeting-text">
+                <h2 id="greeting-title"></h2>
+                <p id="greeting-subtitle"></p>
+            </div>
+            
+            <div id="prompt-container">
+                <!-- Prompt-Karten werden hier von JS eingefügt -->
+            </div>
+
+            <p class="footer" id="footer-text"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const daySelectionContainer = document.getElementById('day-selection');
+            const contentArea = document.getElementById('content-area');
+            const greetingTitle = document.getElementById('greeting-title');
+            const greetingSubtitle = document.getElementById('greeting-subtitle');
+            const promptContainer = document.getElementById('prompt-container');
+            const footerText = document.getElementById('footer-text');
+
+            let appData = {};
+            let selectedDayData = {};
+
+            try {
+                const response = await fetch('prompts.json');
+                appData = await response.json();
+                setupDaySelection();
+            } catch (error) {
+                console.error("Fehler beim Laden der Prompts:", error);
+                daySelectionContainer.innerHTML = "<p>Fehler: Inspirationen konnten nicht geladen werden.</p>";
+            }
+
+            function setupDaySelection() {
+                appData.dailyPrompts.forEach(day => {
+                    const button = document.createElement('button');
+                    button.textContent = `Tag ${day.day}`;
+                    button.dataset.day = day.day;
+                    button.addEventListener('click', () => handleDaySelection(day.day));
+                    daySelectionContainer.appendChild(button);
+                });
+            }
+
+            function handleDaySelection(dayNumber) {
+                // Markiere aktiven Button
+                document.querySelectorAll('#day-selection button').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.day == dayNumber);
+                });
+
+                selectedDayData = appData.dailyPrompts.find(d => d.day == dayNumber);
+                contentArea.classList.remove('hidden');
+                renderContent();
+            }
+
+            function renderContent() {
+                const hour = new Date().getHours();
+                const isMorning = hour < 16; // Alles vor 16 Uhr ist "Morgen"
+
+                const state = JSON.parse(localStorage.getItem(`travelJournalState_day${selectedDayData.day}`)) || {};
+
+                if (isMorning) {
+                    renderMorningView(state);
+                } else {
+                    renderEveningView(state);
+                }
+            }
+            
+            function renderMorningView(state) {
+                greetingTitle.textContent = "Guten Morgen liebe Lumen";
+                const randomGreeting = appData.morningGreetings[Math.floor(Math.random() * appData.morningGreetings.length)];
+                greetingSubtitle.textContent = randomGreeting;
+                footerText.textContent = "Hab einen tollen Tag!";
+                
+                promptContainer.innerHTML = '';
+                selectedDayData.pairs.forEach((pair, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'prompt-card';
+                    card.textContent = pair.morning;
+                    card.dataset.index = index;
+                    card.addEventListener('click', () => handleMorningChoice(index));
+                    promptContainer.appendChild(card);
+                });
+            }
+
+            function handleMorningChoice(selectedIndex) {
+                const state = { chosenIndex: selectedIndex };
+                localStorage.setItem(`travelJournalState_day${selectedDayData.day}`, JSON.stringify(state));
+                
+                // Visuelles Feedback
+                promptContainer.innerHTML = `<div class="prompt-card" style="background-color: #2c3e50; color: white;">Deine Auswahl für heute ist gespeichert!</div>`;
+            }
+
+            function renderEveningView(state) {
+                greetingTitle.textContent = "Guten Abend liebe Lumen";
+                greetingSubtitle.textContent = "Wie war dein Tag?";
+                footerText.textContent = "Viel Spaß mit deinem Tagebuch und danach eine gute Nacht!";
+
+                promptContainer.innerHTML = '';
+                if (state.chosenIndex !== undefined) {
+                    const chosenPair = selectedDayData.pairs[state.chosenIndex];
+                    const card = document.createElement('div');
+                    card.className = 'prompt-card';
+                    card.style.cursor = 'default';
+                    card.textContent = chosenPair.evening;
+                    promptContainer.appendChild(card);
+                } else {
+                    promptContainer.innerHTML = `<div class="prompt-card">Du hast heute Morgen keine Inspiration ausgewählt. Such dir einfach eine der Abend-Ideen aus!</div>`;
+                    // Optional: Alle Abend-Prompts anzeigen
+                    selectedDayData.pairs.forEach(pair => {
+                        const card = document.createElement('div');
+                        card.className = 'prompt-card';
+                        card.textContent = pair.evening;
+                         promptContainer.appendChild(card);
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
 
